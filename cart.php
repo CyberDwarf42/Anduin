@@ -1,4 +1,5 @@
 <?php
+session_start();
 include 'utilities.php';
 //This checks the form data from the product page
 if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_numeric($_POST['quantity'])) {
@@ -41,10 +42,10 @@ if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_num
         //this loops through the post data to update the quantities.
         foreach ($_POST as $key => $value) {
             if (strpos($key, 'quantity') !== false && is_numeric($value)) {
-                $id = str_replace('quantity', '', $key);
+                $id = str_replace('quantity-', '', $key);
                 $quantity = (int)$value;
                 //validates the input.
-                if (is_numeric($id) && isset($_SESSION['cart'][$id]) && quantity > 0) {
+                if (is_numeric($id) && isset($_SESSION['cart'][$id]) && $quantity > 0) {
                     $_SESSION['cart'][$id] = $quantity;
                 }
             }
@@ -53,8 +54,8 @@ if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_num
         header('Location: cart.php');
         exit;
     }
-    if (isset($_POST['placeorder']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-        header('Location: placeorder.php');
+    if (isset($_POST['checkout']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
+        header('Location: checkout.php');
         exit;
     }
 
@@ -68,9 +69,9 @@ if ($products_in_cart) {
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
     $connection = OpenConn();
     $query = $connection->prepare('SELECT * FROM inventory WHERE ID IN (' .$array_to_question_marks . ')');
-    $query->bind_param("i", $product_id);
+    //$query->bind_param("i", $product_id);
 
-    $query->execute();
+    $query->execute(array_keys($products_in_cart));
     $result = $query->get_result();
     $products = $result->fetch_all(MYSQLI_ASSOC);
 
@@ -102,14 +103,14 @@ if ($products_in_cart) {
                 <?php foreach ($products as $product): ?>
                 <tr>
                     <td class="img">
-                        <a href="Product.php?ID=<?php echo $product['ID'] ?>">
+                        <a href="Product.php?Name=<?php echo $product['Name'] ?>">
                             <img src="<?php echo $product['ImagePath'] ?>" width="50" height="50" alt="<?php echo $product['Name'] ?>">
                         </a>
                     </td>
                     <td>
-                        <a href="Product.php?ID=<?php echo $product['ID'] ?>"><?php echo $product['Name'] ?></a>
+                        <a href="Product.php?Name=<?php echo $product['Name'] ?>"><?php echo $product['Name'] ?></a>
                         <br>
-                        <a href="cart.php?remove<?php echo $product['ID'] ?>" class="remove">Remove</a>
+                        <a href="cart.php?remove=<?php echo $product['ID'] ?>" class="remove">Remove</a>
                     </td>
                     <td class="price">&dollar;<?php echo $product['Price']?></td>
                     <td class="quantity">
@@ -123,11 +124,11 @@ if ($products_in_cart) {
         </table>
         <div class="subtotal">
             <span class="text">Subtotal</span>
-            <span calss="price">&dollar;<?php echo $subtotal?></span>
+            <span class="price">&dollar;<?php echo $subtotal?></span>
         </div>
         <div class="buttons">
             <input type="submit" value="Update" name="update">
-            <input type="submit" value="Place Order" name="placeorder">
+            <input type="submit" value="Checkout" name="checkout">
         </div>
     </form>
 </div>

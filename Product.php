@@ -6,6 +6,7 @@ This is a Product Page-->
 
 
 <?php
+session_start();
 include "utilities.php";
 $title = $_GET['Name'];
 front_header($title);

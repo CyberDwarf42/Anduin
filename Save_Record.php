@@ -55,7 +55,7 @@ function checkDuplicate($data){
     global $errorCount;
     $Connection = OpenConn();
 
-    $SQLquery = "SELECT * FROM Inventory WHERE Name='$data' ";
+    $SQLquery = "SELECT * FROM inventory WHERE Name='$data' ";
     $count = mysqli_query( $Connection, $SQLquery );
     if (mysqli_num_rows($count) > 0) {
         echo "Record already exists.";

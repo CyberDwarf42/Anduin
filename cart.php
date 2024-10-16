@@ -1,3 +1,8 @@
+<!--Aaron Gockley
+10/05/2024
+SDEV-435-81
+Argonath Inventory Management Systems
+This displays all the items in the cart and maintains the cart object across pages.-->
 <?php
 session_start();
 include 'utilities.php';

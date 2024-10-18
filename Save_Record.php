@@ -135,7 +135,7 @@ function CheckImage()
         $file = CheckImage();
 
         if ($errorCount == 0) {
-
+            //if error count is 0 it runs this
             $Connection = OpenConn();
             $SQLstring = "INSERT INTO Inventory SET
              Name = '$Name',
@@ -150,7 +150,7 @@ function CheckImage()
             echo "New record created successfully<br>";
             mysqli_close($Connection);
         } else {
-
+            //otherwise it redisplays the form.
             redisplayForm($Name, $Description, $QtyOnHand, $Price);
         }
     } else {

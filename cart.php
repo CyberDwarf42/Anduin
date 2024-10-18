@@ -74,7 +74,6 @@ if ($products_in_cart) {
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
     $connection = OpenConn();
     $query = $connection->prepare('SELECT * FROM inventory WHERE ID IN (' .$array_to_question_marks . ')');
-    //$query->bind_param("i", $product_id);
 
     $query->execute(array_keys($products_in_cart));
     $result = $query->get_result();

@@ -4,13 +4,9 @@ SDEV-435-81
 Argonath Inventory Management Systems
 This page is for Adding a new entry to the system-->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Add a new Item</title>
-</head>
-<body>
+<?php
+include "utilities.php";
+rear_header("Add Item")?>
     <form action="Save_Record.php" method="post" enctype="multipart/form-data" > <!--This form will collect information for creating a new item in the database-->
         <input type="hidden" name="ID" value=0> <!--This seems unnecessary, but is necessary for the save_record page.-->
         Name: <input type="text" name="Name" placeholder="name" maxlength="30" required><br>
@@ -20,5 +16,4 @@ This page is for Adding a new entry to the system-->
         Image: <input type="file" name="Image" required><br>
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+<?php rear_footer();

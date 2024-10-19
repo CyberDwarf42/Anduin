@@ -55,8 +55,9 @@ front_header('Place Order');
         $name = $first . " " . $last;
 
 
-
-    if ($connection->execute_query("SELECT * FROM customer WHERE Name = ?", [$name]) !== TRUE) { //if the customer does not exist.
+        $result = $connection->execute_query("SELECT * FROM customer WHERE Email = ?", [$email]);
+        $count = mysqli_num_rows($result);
+    if ($count < 1) { //if the customer does not exist.
         $connection->execute_query("INSERT INTO customer (Name, Email, StreetAddress, City, State, ZipCode, PhoneNumber) VALUES ('$name', '$email', '$address', '$city', '$state', '$zip', '$phone')"); //it enters a new customer field
         $id = $connection->execute_query('SELECT ID FROM customer WHERE Name = ?', [$name]); //loads that customer ID
         while ($row = $id->fetch_assoc()) {

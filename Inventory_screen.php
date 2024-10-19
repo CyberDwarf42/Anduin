@@ -4,21 +4,14 @@ SDEV-435-81
 Argonath Inventory Management Systems
 This page displays all the inventory items in the database-->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <link rel="stylesheet" href="styles.css"
-    <title>Inventory Information</title>
-    <a href="Add.php">Add Item</a>
-</head>
-<body>
-<div class = "container">
+
 <?php
 
     include "utilities.php";
-
-    $Link = OpenConn();
+    rear_header("Inventory");
+    $Link = OpenConn(); ?>
+    <div class = "container">
+        <?php
     $Query = "SELECT * FROM inventory";
 
     if ($result = mysqli_query($Link, $Query)) {
@@ -48,8 +41,7 @@ This page displays all the inventory items in the database-->
             <?php
         }
     }
-    mysqli_close($Link);
-?>
+    mysqli_close($Link);?>
 </div>
-</body>
-</html>
+
+<?php rear_footer(); ?>

@@ -76,3 +76,46 @@ function front_footer() {
 EOT;
 
 }
+
+function rear_header($title) {
+    echo <<<EOT
+    <!DOCTYPE html>
+    <html lang="en">
+      <head>
+         <meta charset="UTF-8">
+         <link rel="stylesheet" href="styles.css">
+         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.1/css/all.css">
+         
+    <title>$title</title>
+    </head>
+    <body>
+        <header>
+            <div class="inventory-container">
+                <h1>$title</h1>
+                <nav>
+                    <a href="Add.php">Add Item</a>
+                    <a href="Inventory.php">Inventory</a>
+                    <a href="IndexRear.php">Orders</a>
+                </nav>
+            </div>
+        </header>
+        <main>
+
+EOT;
+}
+
+function rear_footer() {
+    $year = date("Y");
+    echo <<<EOT
+        </main>
+        <footer>
+        <div class="content-wrapper">
+            <p>&copy; $year, Anduin Inventory Management</p>
+        </div>
+        </footer>
+    </body>
+</html>   
+
+EOT;
+
+}

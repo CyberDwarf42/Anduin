@@ -4,19 +4,14 @@ SDEV-435-81
 Argonath Inventory Management Systems
 This loads the clicked items info into a form-->
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Update</title>
-</head>
-<body>
+
     <?php
     /**
      * This will load all the information of the item that is clicked on from the Inventory_Screen. A very similar method will be used in the storefront page
      */
     include "utilities.php";
     $name = $_GET['Name'];
+    rear_header($name);
     $link = OpenConn();
     $query = "SELECT * FROM inventory WHERE Name = '$name'";
     $result = mysqli_query($link, $query);
@@ -44,5 +39,4 @@ This loads the clicked items info into a form-->
         value ="<?php echo $price; ?>"><br>
         <input type="submit" value="Submit">
     </form>
-</body>
-</html>
+<?php rear_footer(); ?>

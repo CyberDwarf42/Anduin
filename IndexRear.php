@@ -12,6 +12,38 @@ $result = mysqli_query($connection, "SELECT * FROM orderids INNER JOIN customer 
 
 $orders = mysqli_fetch_all($result, MYSQLI_ASSOC);
 
+if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
+    $orderid = $_GET['delete'];
+    $result = $connection->execute_query("SELECT * FROM lineitems INNER JOIN inventory ON lineitems.Item = inventory.ID WHERE OrderID = '$orderid'");
+    $lines = mysqli_fetch_all($result, MYSQLI_ASSOC);
+
+    foreach ($lines as $line) { //this updates the inventory to change the inventory quantities to match the inventory after the order is deleted.
+        $id = $line['Item'];
+        $oldcommitted = $line['QtyCommitted'];
+        $oldonhand = $line['QtyOnHand'];
+        $newcommitted = $oldcommitted - $line['Qty'];
+        $newonhand = $oldonhand + $line['Qty'];
+        $connection->execute_query("UPDATE inventory SET QtyOnHand = '$newonhand', QtyCommitted = '$newcommitted' WHERE ID = '$id'");
+    }
+    $connection->execute_query("DELETE FROM lineitems WHERE OrderID = '$orderid'");
+    $connection->execute_query("DELETE FROM orderids WHERE OrderID = '$orderid'");
+    header("Location:IndexRear.php");
+}
+
+if (isset($_GET['picked']) && is_numeric($_GET['picked'])) {
+    $orderid = $_GET['picked'];
+    $result = $connection->execute_query("SELECT * FROM lineitems INNER JOIN inventory ON lineitems.Item = inventory.ID WHERE OrderID = '$orderid'");
+    $lines = mysqli_fetch_all($result, MYSQLI_ASSOC);
+    foreach ($lines as $line) {
+        $id = $line['Item'];
+        $oldcommitted = $line['QtyCommitted'];
+        $newcommitted = $oldcommitted - $line['Qty'];
+        $connection->execute_query("UPDATE inventory SET QtyCommitted = '$newcommitted' WHERE ID = '$id'");
+    }
+    $connection->execute_query("UPDATE orderids SET Picked = 1 WHERE OrderID = '$orderid'");
+    header("Location:IndexRear.php");
+}
+
     ?>
     <table>
         <thead>

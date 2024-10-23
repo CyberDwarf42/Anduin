@@ -81,3 +81,4 @@ if (isset($_GET['picked']) && is_numeric($_GET['picked'])) {
 </tbody>
         <?php endforeach; ?>
     </table>
+<?php rear_footer();

@@ -12,7 +12,6 @@ $connection = OpenConn();
 
 function addItems($ID) { //this function adds items to the lineitems table.
     $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
-    $products = array();
     if ($products_in_cart) {
         //This creates an array for loading the items from the database.
         $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
@@ -40,6 +39,7 @@ function addItems($ID) { //this function adds items to the lineitems table.
         }
     }
 }
+
 front_header('Place Order');
 
         $first = ($_POST['first']);

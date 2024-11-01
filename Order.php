@@ -1,4 +1,5 @@
 <?php
+
 $id = $_GET['ID'];
 include 'utilities.php';
 
@@ -49,4 +50,6 @@ $customerinfo = $customerinfo['Name']."<br>".$customerinfo['StreetAddress']."<br
     <?php endforeach; ?>
 </table>
 <br>
+
  <?php rear_footer();
+ header('location: printorder.php');

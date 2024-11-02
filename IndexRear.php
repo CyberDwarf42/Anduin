@@ -60,7 +60,7 @@ if (isset($_GET['picked']) && is_numeric($_GET['picked'])) {
         <?php foreach ($orders as $order): ?>
         <tr>
             <td>
-                <a href="Order.php?ID=<?php echo $order['OrderID']; ?>"><?php echo $order['OrderID']; ?></a>
+                <a href="printorder.php?ID=<?php echo $order['OrderID']; ?>"><?php echo $order['OrderID']; ?></a>
             </td>
             <td>
                 <?php echo $order['Name']; ?><br>

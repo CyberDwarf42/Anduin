@@ -3,7 +3,6 @@
 $id = $_GET['ID'];
 include 'utilities.php';
 
-
 $connection = OpenConn();
 $lineresult = $connection->query("SELECT * FROM orderids INNER JOIN lineitems ON lineitems.OrderID = orderids.OrderID INNER JOIN inventory ON inventory.ID = lineitems.Item WHERE orderids.OrderID = '$id'");
 $lineinfo = $lineresult->fetch_assoc();
@@ -52,4 +51,4 @@ $customerinfo = $customerinfo['Name']."<br>".$customerinfo['StreetAddress']."<br
 <br>
 
  <?php rear_footer();
- header('location: printorder.php');
+//eader('location: printorder.php');

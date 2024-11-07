@@ -1,0 +1,9 @@
+//This file contains the constraints for the tables.
+
+ALTER TABLE `lineitems`
+  ADD CONSTRAINT `ItemInfo` FOREIGN KEY (`Item`) REFERENCES `inventory` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT,
+  ADD CONSTRAINT `OrderInfo` FOREIGN KEY (`OrderID`) REFERENCES `orderids` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;
+
+
+ALTER TABLE `orderids`
+  ADD CONSTRAINT `CustomerInfo` FOREIGN KEY (`Customer`) REFERENCES `customer` (`ID`) ON DELETE RESTRICT ON UPDATE RESTRICT;

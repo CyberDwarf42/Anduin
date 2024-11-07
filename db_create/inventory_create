@@ -1,0 +1,12 @@
+//This file creates the inventory table.
+
+CREATE TABLE `inventory` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(30) NOT NULL,
+  `Description` varchar(100) NOT NULL,
+  `QtyOnHand` int NOT NULL,
+  `QtyCommitted` int NOT NULL,
+  `Price` float NOT NULL,
+  `ImagePath` varchar(400) NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

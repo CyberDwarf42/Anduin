@@ -1,0 +1,13 @@
+//This file creates a customer table
+
+CREATE TABLE `customer` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Name` varchar(50) NOT NULL,
+  `Email` varchar(50) NOT NULL,
+  `StreetAddress` varchar(70) NOT NULL,
+  `City` varchar(40) NOT NULL,
+  `State` varchar(2) NOT NULL,
+  `ZipCode` tinyint NOT NULL,
+  `Phone Number` text NOT NULL,
+  PRIMARY KEY (`ID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

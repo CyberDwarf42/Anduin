@@ -1,0 +1,9 @@
+//This file creates the lineitems table
+
+CREATE TABLE `lineitems` (
+  `Item` int NOT NULL,
+  `Qty` int NOT NULL,
+  `OrderID` int DEFAULT NULL,
+  KEY `Item` (`Item`),
+  KEY `OrderID` (`OrderID`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

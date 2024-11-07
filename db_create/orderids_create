@@ -1,0 +1,9 @@
+//this file creates the orderids table
+
+CREATE TABLE `orderids` (
+  `ID` int NOT NULL AUTO_INCREMENT,
+  `Customer` int NOT NULL,
+  `picked` tinyint(1) DEFAULT '0',
+  PRIMARY KEY (`ID`),
+  KEY `Customer` (`Customer`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;

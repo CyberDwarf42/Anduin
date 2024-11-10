@@ -12,4 +12,4 @@ $dompdf = new Dompdf;
 $dompdf->loadHtml(file_get_contents('http://localhost/Anduin/Order.php?ID='.$id));
 $dompdf->setPaper('A4', 'portrait');
 $dompdf->render();
-$dompdf->stream();
+$dompdf->stream("Order #$id.pdf", array("Attachment" => false));

@@ -5,7 +5,7 @@ include 'utilities.php';
 
 $connection = OpenConn();
 
-$lines = $connection->query("SELECT orderids.OrderID, lineitems.Qty, inventory.Name FROM orderids INNER JOIN lineitems ON orderids.OrderID = lineitems.OrderID INNER JOIN inventory ON lineitems.Item = inventory.ID WHERE orderids.Customer = '$ID'");
+$lines = $connection->execute_query("SELECT orderids.OrderID, lineitems.Qty, inventory.Name FROM orderids INNER JOIN lineitems ON orderids.OrderID = lineitems.OrderID INNER JOIN inventory ON lineitems.Item = inventory.ID WHERE orderids.Customer = '$ID'");
 
 ?>
 

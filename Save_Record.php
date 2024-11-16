@@ -7,6 +7,7 @@ This page is for processing both Add and Updates to inventory items, not for qty
 <?php
 
 include 'utilities.php';
+include 'owasp-php-filters/testing/sanitize.php';
 
 function PositiveOnly($fieldName) { //This tells you which field needs to be positive.
     echo "The field \"$fieldName\" must be positive.";
@@ -118,10 +119,10 @@ function CheckImage()
      */
 
     $ID = ($_POST['ID']);
-    $Name = ($_POST['Name']);
-    $Description = ($_POST['Description']);
-    $QtyOnHand = ($_POST['QtyOnHand']);
-    $Price = ($_POST['Price']);
+    $Name = sanitize_sql_string($_POST['Name']);
+    $Description = sanitize_sql_string($_POST['Description']);
+    $QtyOnHand = sanitize_int($_POST['QtyOnHand']);
+    $Price = sanitize_float($_POST['Price']);
 
     /**
      * An if statement checks to see if the ID is equal to 0, which then runs a number of checks on the input.
@@ -137,12 +138,7 @@ function CheckImage()
         if ($errorCount == 0) {
             //if error count is 0 it runs this
             $Connection = OpenConn();
-            $SQLstring = "INSERT INTO Inventory SET
-             Name = '$Name',
-             Description = '$Description',
-             QtyOnHand = '$QtyOnHand',
-             Price = '$Price',
-             ImagePath = '$file'";
+            $SQLstring = "INSERT INTO Inventory (Name, Description, QtyOnHand, Price, ImagePath) VALUES ('$Name', '$Description', '$QtyOnHand', '$Price', '$file'";
             if (!mysqli_query($Connection, $SQLstring)) {
                 echo "There was an error inserting your record: " . mysqli_error($Connection);
                 exit();

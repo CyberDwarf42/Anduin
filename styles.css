@@ -7,9 +7,9 @@ img {
 
 .container{
     display: grid;
-    grid-template-columns: auto auto auto auto;
-    grid-template-rows: 100px 100px;
-    grid-gap: 1rem
+    grid-template-columns: repeat(4, 1fr);
+    grid-auto-rows: minmax(600px, auto);
+
 }
 
 .inventory-container{
@@ -17,6 +17,7 @@ img {
     height: 100%;
     text-align: center;
     top: 50%;
+
 }
 * {
     box-sizing: border-box;
@@ -246,4 +247,70 @@ main .cart .buttons input[type="submit"] {
 }
 main .cart .buttons input[type="submit"]:hover {
     background: #434f61;
+}
+main > .products h1 {
+    display: grid;
+    font-weight: normal;
+    margin: 0;
+    padding: 40px 0;
+    font-size: 24px;
+    text-align: center;
+    width: 100%;
+}
+main > .products .buttons {
+    text-align: right;
+    padding-bottom: 40px;
+}
+main > .products .buttons a {
+    display: grid;
+    text-decoration: none;
+    margin-left: 5px;
+    padding: 12px 20px;
+    border: 0;
+    background: #4e5c70;
+    color: #FFFFFF;
+    font-size: 14px;
+    font-weight: bold;
+    border-radius: 5px;
+}
+main > .products .buttons a:hover {
+    background: #434f61;
+}
+main .recentlyadded .products, main .products .products-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    padding: 40px 0 0 0;
+}
+main .recentlyadded .products .product, main .products .products-wrapper .product {
+    display: block;
+    overflow: hidden;
+    text-decoration: none;
+    width: 25%;
+    padding-bottom: 60px;
+}
+main .recentlyadded .products .product img, main .products .products-wrapper .product img {
+    transform: scale(1);
+    transition: transform 1s;
+}
+main .recentlyadded .products .product .name, main .products .products-wrapper .product .name {
+    display: block;
+    color: #555555;
+    padding: 20px 0 2px 0;
+}
+main .recentlyadded .products .product .price, main .products .products-wrapper .product .price {
+    display: block;
+    color: #999999;
+}
+main .recentlyadded .products .product .rrp, main .products .products-wrapper .product .rrp {
+    color: #BBBBBB;
+    text-decoration: line-through;
+}
+main .recentlyadded .products .product:hover img, main .products .products-wrapper .product:hover img {
+    transform: scale(1.05);
+    transition: transform 1s;
+}
+main .recentlyadded .products .product:hover .name, main .products .products-wrapper .product:hover .name {
+    text-decoration: underline;
 }

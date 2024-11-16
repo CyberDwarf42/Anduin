@@ -29,7 +29,7 @@ This page displays all the inventory items in the database-->
             ?>
             <div class = "inventory-container">
                 <div class="image">
-                    <img src="<?php echo $Image; ?>">
+                    <img src="<?php echo $Image; ?>" >
                 </div>
                 <div class="Information">
                     <h5><?php echo "<a href='Update.php?Name=$Name'>" .$Name. '</a>'?></h5> <!--This lets the name be a link, which will transfer the name information to the Update.php page -->

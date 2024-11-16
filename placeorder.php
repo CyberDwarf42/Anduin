@@ -7,6 +7,7 @@ This processes customer information and enters a new order.-->
 <?php
 session_start();
 include 'utilities.php';
+include 'owasp-php-filters/testing/sanitize.php';
 
 $connection = OpenConn();
 
@@ -42,14 +43,14 @@ function addItems($ID) { //this function adds items to the lineitems table.
 
 front_header('Place Order');
 
-        $first = ($_POST['first']);
-        $last = ($_POST['last']);
-        $email = ($_POST['email']);
-        $address = ($_POST['address']);
-        $state = ($_POST['state']);
-        $city = ($_POST['city']);
-        $state = ($_POST['state']);
-        $zip = ($_POST['zip']);
+        $first = sanitize_sql_string($_POST['first']);
+        $last = sanitize_sql_string($_POST['last']);
+        $email = sanitize_sql_string($_POST['email']);
+        $address = sanitize_sql_string($_POST['address']);
+        $state = sanitize_sql_string($_POST['state']);
+        $city = sanitize_sql_string($_POST['city']);
+        $state = sanitize_sql_string($_POST['state']);
+        $zip = sanitize_int($_POST['zip']);
         $phone = ($_POST['phone']);
 
         $name = $first . " " . $last;

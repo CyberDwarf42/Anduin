@@ -51,4 +51,3 @@ $customerinfo = $customerinfo['Name']."<br>".$customerinfo['StreetAddress']."<br
 <br>
 
  <?php rear_footer();
-//eader('location: printorder.php');

@@ -95,7 +95,7 @@ function rear_header($title) {
                 <nav>
                     <a href="Add.php">Add Item</a>
                     <a href="Inventory_screen.php">Inventory</a>
-                    <a href="customer_history.php">History</a>
+                    <a href="customer_list.php">History</a>
                     <a href="IndexRear.php">Orders</a>
                 </nav>
             </div>

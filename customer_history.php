@@ -1,62 +1,41 @@
 <!--Aaron Gockley
-11/7/2024
+11/15/2024
 SDEV-435-81
 Argonath Inventory Management Systems
-This page is for searching for a customers history-->
+This processes the customer id to get their history-->
 <?php
-include "utilities.php";
-rear_header("History");
-$connection = OpenConn(); ?>
 
-<form action="customer_search.php" method="post">
-    CustomerEmail<input type="email" name="email" required>
-</form>
+$ID = $_GET['ID'];
+include 'utilities.php';
 
-<?php
-$result = $connection->execute_query("SELECT * FROM customer");
-$customers = mysqli_fetch_all($result, MYSQLI_ASSOC); ?>
+$connection = OpenConn();
+
+$lines = $connection->query("SELECT orderids.OrderID, lineitems.Qty, inventory.Name FROM orderids INNER JOIN lineitems ON orderids.OrderID = lineitems.OrderID INNER JOIN inventory ON lineitems.Item = inventory.ID WHERE orderids.Customer = '$ID'");
+
+?>
+
 <table>
     <thead>
     <tr>
+        <td>OrderID</td>
         <td>Name</td>
-        <td>Email</td>
-        <td>Street</td>
-        <td>City</td>
-        <td>State</td>
-        <td>Zip</td>
-        <td>PhoneNumber</td>
+        <td>Qty</td>
     </tr>
     </thead>
     <tbody>
-    <?php foreach ($customers as $customer): ?>
+    <?php foreach($lines as $line): ?>
     <tr>
         <td>
-            <?php echo $customer['Name']; ?>
+            <?php echo $line['OrderID']; ?>
         </td>
         <td>
-            <?php echo $customer['Email']; ?>
+            <?php echo $line['Name']; ?>
         </td>
         <td>
-            <?php echo $customer['StreetAddress']; ?>
-        </td>
-        <td>
-            <?php echo $customer['City']; ?>
-        </td>
-        <td>
-            <?php echo $customer['State']; ?>
-        </td>
-        <td>
-            <?php echo $customer['ZipCode']; ?>
-        </td>
-        <td>
-            <?php echo $customer['PhoneNumber']; ?>
+            <?php echo $line['Qty']; ?>
         </td>
     </tr>
     </tbody>
     <?php endforeach; ?>
 </table>
-
-
-
 <?php rear_footer();
-

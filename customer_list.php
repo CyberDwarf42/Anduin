@@ -32,7 +32,7 @@ $customers = mysqli_fetch_all($result, MYSQLI_ASSOC); ?>
     <?php foreach ($customers as $customer): ?>
     <tr>
         <td>
-            <a href="history_print.php?ID=<?php echo $customer['ID']; ?>"><?php echo $customer['Name']; ?></a>
+            <a href="historyprint.php?ID=<?php echo $customer['ID']; ?>"><?php echo $customer['Name']; ?></a>
         </td>
         <td>
             <?php echo $customer['Email']; ?>

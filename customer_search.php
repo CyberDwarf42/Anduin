@@ -27,5 +27,5 @@ if ($count < 1) {
 } else {
     $info = $result->fetch_assoc();
     $ID = $info['ID'];
-    header("Location: history_print.php?ID=$ID");
+    header("Location: historyprint.php?ID=$ID");
 }

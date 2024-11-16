@@ -1,8 +1,3 @@
-<!--Aaron Gockley
-11/15/2024
-SDEV-435-81
-Argonath Inventory Management Systems
-This processes the customer id to get their history-->
 <?php
 
 $ID = $_GET['ID'];

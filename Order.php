@@ -5,7 +5,7 @@ include 'utilities.php';
 
 $connection = OpenConn();
 $lineresult = $connection->query("SELECT * FROM orderids INNER JOIN lineitems ON lineitems.OrderID = orderids.OrderID INNER JOIN inventory ON inventory.ID = lineitems.Item WHERE orderids.OrderID = '$id'");
-$lineinfo = $lineresult->fetch_assoc();
+
 
 $customerresult = $connection->query("SELECT * FROM customer INNER JOIN orderids ON orderids.Customer = customer.ID WHERE orderids.OrderID = '$id'");
 $customerinfo = $customerresult->fetch_assoc();

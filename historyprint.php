@@ -11,10 +11,8 @@ use Dompdf\Dompdf;
 
 require_once('dompdf/autoload.inc.php');
 
-
-
-$dompdf = new Dompdf;
-$dompdf->loadHtml(file_get_contents('http://localhost/Anduin/customerhistory.php?ID='.$id));
-$dompdf->setPaper('A4', 'portrait');
-$dompdf->render();
-$dompdf->stream("Customer #$id.pdf", array("Attachment" => false));
+$dompdf1 = new Dompdf;
+$dompdf1->loadHtml(file_get_contents('http://localhost/Anduin/customerhistory.php?ID=1'));
+$dompdf1->setPaper('A4', 'portrait');
+$dompdf1->render();
+$dompdf1->stream("Customer #$id.pdf", array("Attachment" => false));

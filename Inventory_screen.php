@@ -18,7 +18,7 @@ This page displays all the inventory items in the database-->
         foreach ($inventory as $inventory_item):
 
             /**
-             * This layout looks great, and this loop is simple and easy to follow. 
+             * This layout looks great, and this loop is simple and easy to follow.
              */
             ?>
             <div class = "inventory-container">

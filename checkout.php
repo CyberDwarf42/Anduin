@@ -24,3 +24,4 @@ front_header('Checkout') ?>
         <input type="submit" value="Submit">
     </form>
 </div>
+<?php front_footer();?>

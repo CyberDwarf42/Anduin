@@ -6,15 +6,16 @@ This displays all the items in the cart and maintains the cart object across pag
 <?php
 session_start();
 include 'utilities.php';
+include 'owasp-php-filters/testing/sanitize.php';
+
 //This checks the form data from the product page
 if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_numeric($_POST['quantity'])) {
     //this makes sure the variables are integers
-    $product_id = (int)$_POST['ID'];
-    $quantity = (int)$_POST['quantity'];
+    $product_id = sanitize_int($_POST['ID']);
+    $quantity = sanitize_int($_POST['quantity']);
     $connection = OpenConn();
 
-    $query = "SELECT * FROM inventory WHERE ID = '$product_id'";
-    $result = mysqli_query($connection, $query);
+    $result = $connection->execute_query("SELECT * FROM inventory WHERE ID = ?", [$product_id]); //parameterized query.
     $product = mysqli_fetch_array($result); //loads the result into an associative array
 
     //checks if product exists
@@ -34,8 +35,9 @@ if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_num
         }
     }
     //prevents resubmission
-    //header('Location: cart.php');
-    //exit;
+    header('Location: cart.php');
+    exit;
+
 }
     // Remove product from cart, check for the URL param "remove", this is the product id, make sure it's a number and check if it's in the cart
     if (isset($_GET['remove']) && is_numeric($_GET['remove']) && isset($_SESSION['cart']) && isset($_SESSION['cart'][$_GET['remove']])) {
@@ -59,23 +61,24 @@ if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_num
         header('Location: cart.php');
         exit;
     }
-    if (isset($_POST['checkout']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) {
-        header('Location: checkout.php');
+
+    if (isset($_POST['checkout']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) { //if the checkout flag is set, and the cart is not empty
+        header('Location: checkout.php'); //it redirects you to the checkout page.
         exit;
     }
 
-    $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array();
+    $products_in_cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : array(); //initializes the cart array object
     $products = array();
-    $subtotal = 0.00;
+    $subtotal = 0.00; //initializes subtotal
 
     //if there are products in the cart.
 if ($products_in_cart) {
     //This creates an array for loading the items from the database.
     $array_to_question_marks = implode(',', array_fill(0, count($products_in_cart), '?'));
     $connection = OpenConn();
-    $query = $connection->prepare('SELECT * FROM inventory WHERE ID IN (' .$array_to_question_marks . ')');
+    $query = $connection->prepare('SELECT * FROM inventory WHERE ID IN (' .$array_to_question_marks . ')'); //special parameterized query,
 
-    $query->execute(array_keys($products_in_cart));
+    $query->execute(array_keys($products_in_cart)); //loops through using the products in cart values
     $result = $query->get_result();
     $products = $result->fetch_all(MYSQLI_ASSOC);
 

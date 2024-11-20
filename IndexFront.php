@@ -23,7 +23,7 @@ front_header("Storefront")?>
     foreach ($inventory as $inventory_item):
 
             /**
-             * I used this type of container to display the information so that I could make it look better. This was also a test for the actual store page layout.
+             * This is using as similar layout to the inventory in the rear of the project.
              */
             ?>
             <div class = "inventory-container">

@@ -81,6 +81,7 @@ if ($products_in_cart) {
     $query->execute(array_keys($products_in_cart)); //loops through using the products in cart values
     $result = $query->get_result();
     $products = $result->fetch_all(MYSQLI_ASSOC);
+    mysqli_close($connection);
 
     foreach ($products as $product) {
         $subtotal += (float)$product['Price'] * (int)$products_in_cart[$product['ID']];

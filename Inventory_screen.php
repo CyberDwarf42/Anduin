@@ -9,39 +9,32 @@ This page displays all the inventory items in the database-->
 
     include "utilities.php";
     rear_header("Inventory");
-    $Link = OpenConn(); ?>
+    $connection = OpenConn(); ?>
     <div class = "container">
         <?php
-    $Query = "SELECT * FROM inventory";
 
-    if ($result = mysqli_query($Link, $Query)) {
-        while ($row = mysqli_fetch_assoc($result)) {
-            $Name = $row['Name'];
-            $Price = $row['Price'];
-            $QtyOnHand = $row['QtyOnHand'];
-            $QtyCommitted = $row['QtyCommitted'];
-            $Image = $row['ImagePath'];
+        $result = $connection->execute_query("SELECT * FROM inventory");
+        $inventory = mysqli_fetch_all($result, MYSQLI_ASSOC);
+        foreach ($inventory as $inventory_item):
 
             /**
-             * I used this type of container to display the information so that I could make it look better. This was also a test for the actual store page layout.
+             * This layout looks great, and this loop is simple and easy to follow. 
              */
-
             ?>
             <div class = "inventory-container">
                 <div class="image">
-                    <img src="<?php echo $Image; ?>" >
+                    <img src="<?php echo $inventory_item['ImagePath']; ?>">
                 </div>
                 <div class="Information">
-                    <h5><?php echo "<a href='Update.php?Name=$Name'>" .$Name. '</a>'?></h5> <!--This lets the name be a link, which will transfer the name information to the Update.php page -->
-                    <h5><?php echo "$".$Price ?></h5>
-                    <h5><?php echo "On Hand: " .$QtyOnHand?></h5>
-                    <h5><?php echo "Committed: " .$QtyCommitted ?></h5>
+                    <h5><a href="Update.php?Name=<?php echo $inventory_item['Name'];?>"><?php echo $inventory_item['Name'] ?></a></h5> <!--This lets the name be a link, which will transfer the name information to the Update.php page -->
+                    <h5><?php echo "$".$inventory_item['Price'] ?></h5>
+                    <h5><?php echo "Committed: " .$inventory_item['QtyCommitted']?></h5>
+                    <h5><?php echo "On Hand: " .$inventory_item['QtyOnHand']?></h5>
                 </div>
             </div>
-            <?php
-        }
-    }
-    mysqli_close($Link);?>
+        <?php endforeach;
+
+    mysqli_close($connection);?>
 </div>
 
 <?php rear_footer(); ?>

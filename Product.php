@@ -16,12 +16,11 @@ front_header($title);
 
 
 $name = $_GET['Name'];
-$link = OpenConn();
-$query = "SELECT * FROM inventory WHERE Name = '$name'";
-$result = mysqli_query($link, $query);
+$connection = OpenConn();
 
-if ($result = mysqli_query($link, $query)) {
-    while ($row = mysqli_fetch_assoc($result)) {
+$result = $connection->execute_query("SELECT * FROM inventory WHERE Name = '$name'");
+
+while ($row = mysqli_fetch_assoc($result)) {
         $ID = $row['ID'];
         $name = $row['Name'];
         $description = $row['Description'];
@@ -29,7 +28,6 @@ if ($result = mysqli_query($link, $query)) {
         $price = $row['Price'];
         $Image = $row['ImagePath'];
     }
-}
  ?>
             <div class="product content-wrapper">
                 <div class="image">

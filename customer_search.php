@@ -13,7 +13,7 @@ $email = $_POST['email'];
 $result = $connection->execute_query("SELECT * From customer WHERE Email = ?", [$email]); //since two people may have the same name, I am using the email as a username.
 $count = mysqli_num_rows($result); //counts the result,
 
-mysqli_close($connection); //closes connection since it no longer is needed. 
+mysqli_close($connection); //closes connection since it no longer is needed.
 
 if ($count < 1) { //if it does not find any results.
     echo "No results found, please search again, or click the link to go back to the previous page.";

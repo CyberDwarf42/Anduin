@@ -25,8 +25,10 @@ function OpenConn() {
 }
 
 
-
-
+/**
+ * This is used in every front facing page, takes a title argument to generate the header across all front facing pages.
+ * includes a little way to see how many items are in the cart in the current session.
+ */
 
 function front_header($title) {
     // Get the number of items in the shopping cart, which will be displayed in the header.
@@ -61,6 +63,9 @@ function front_header($title) {
 EOT;
 }
 
+/**
+ * Sets the footer for each front facing page.
+ */
 function front_footer() {
     $year = date("Y");
     echo <<<EOT
@@ -77,6 +82,9 @@ EOT;
 
 }
 
+/**
+ * This sets up the header for the rear admin tools, includes links to everything for the admin tools.
+ */
 function rear_header($title) {
     echo <<<EOT
     <!DOCTYPE html>
@@ -105,6 +113,9 @@ function rear_header($title) {
 EOT;
 }
 
+/**
+ * This is the footer for the rear facing pages. 
+ */
 function rear_footer() {
     $year = date("Y");
     echo <<<EOT

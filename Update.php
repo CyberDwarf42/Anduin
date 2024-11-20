@@ -12,19 +12,19 @@ This loads the clicked items info into a form-->
     include "utilities.php";
     $name = $_GET['Name'];
     rear_header($name);
-    $link = OpenConn();
-    $query = "SELECT * FROM inventory WHERE Name = '$name'";
-    $result = mysqli_query($link, $query);
+    $connection = OpenConn();
+    $result = $connection->execute_query("SELECT * FROM inventory WHERE Name = '$name'");
 
-    if ($result = mysqli_query($link, $query)) {
-        while ($row = mysqli_fetch_assoc($result)) {
+    while ($row = mysqli_fetch_assoc($result)) {
             $ID = $row['ID'];
             $name = $row['Name'];
             $description = $row['Description'];
             $qtyonhand = $row['QtyOnHand'];
             $price = $row['Price'];
-        }
     }
+
+    mysqli_close($connection);
+
     ?>
     <!--This loads a form which will allow the user to update the item's information.-->
     <form action="Save_Record.php" method="post">
@@ -39,4 +39,5 @@ This loads the clicked items info into a form-->
         value ="<?php echo $price; ?>"><br>
         <input type="submit" value="Submit">
     </form>
+
 <?php rear_footer(); ?>

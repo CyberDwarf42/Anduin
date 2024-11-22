@@ -53,3 +53,16 @@ R_print_order
 R_save_record
 
 R_update
+
+
+
+Setup
+
+Load the pages onto your server, once you have them set up navigate to R_save_record, line 71,
+
+Look for the path to the image folder on your server, and update the target directory. 
+
+On my personal machine it was F:/wamp64/www/Anduin/Images/ but on your machine it may be different, this line is
+where uploaded images will live, and also supply the path for the image source for storefront. 
+
+This step can be done with any text editor, once the 

@@ -26,7 +26,7 @@ This page displays all the inventory items in the database-->
                     <img src="<?php echo $inventory_item['ImagePath']; ?>">
                 </div>
                 <div class="Information">
-                    <h5><a href="Update.php?Name=<?php echo $inventory_item['Name'];?>"><?php echo $inventory_item['Name'] ?></a></h5> <!--This lets the name be a link, which will transfer the name information to the Update.php page -->
+                    <h5><a href="R_update.php?Name=<?php echo $inventory_item['Name'];?>"><?php echo $inventory_item['Name'] ?></a></h5> <!--This lets the name be a link, which will transfer the name information to the Update.php page -->
                     <h5><?php echo "$".$inventory_item['Price'] ?></h5>
                     <h5><?php echo "Committed: " .$inventory_item['QtyCommitted']?></h5>
                     <h5><?php echo "On Hand: " .$inventory_item['QtyOnHand']?></h5>

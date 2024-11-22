@@ -7,7 +7,7 @@ This page is for Adding a new entry to the system-->
 <?php
 include "utilities.php";
 rear_header("Add Item")?>
-    <form action="Save_Record.php" method="post" enctype="multipart/form-data" > <!--This form will collect information for creating a new item in the database-->
+    <form action="R_save_record.php" method="post" enctype="multipart/form-data" > <!--This form will collect information for creating a new item in the database-->
         <input type="hidden" name="ID" value=0> <!--This seems unnecessary, but is necessary for the save_record page.-->
         Name: <input type="text" name="Name" placeholder="name" maxlength="30" required><br>
         Description: <input type="text" name="Description" placeholder="Description" maxlength="100" required><br>

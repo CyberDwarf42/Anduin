@@ -42,7 +42,7 @@ while ($row = mysqli_fetch_assoc($result)) {
                         <?php echo "On Hand: " .$qtyonhand?>
                     </span>
                 </div>
-                <form action="cart.php" method="POST">
+                <form action="F_cart.php" method="POST">
                     <input type="number" name="quantity" value="1" min="1" max="<?php echo $qtyonhand?>" placeholder="Quantity" required>
                     <input type="hidden" name="ID" value="<?php echo $ID ?>">
                     <input type="submit" value="Add to Cart">

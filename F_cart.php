@@ -35,7 +35,7 @@ if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_num
         }
     }
     //prevents resubmission
-    header('Location: cart.php');
+    header('Location: F_cart.php');
     exit;
 
 }
@@ -58,12 +58,12 @@ if(isset($_POST['ID'], $_POST['quantity']) && is_numeric($_POST['ID']) && is_num
             }
         }
         //prevents resubmission
-        header('Location: cart.php');
+        header('Location: F_cart.php');
         exit;
     }
 
     if (isset($_POST['checkout']) && isset($_SESSION['cart']) && !empty($_SESSION['cart'])) { //if the checkout flag is set, and the cart is not empty
-        header('Location: checkout.php'); //it redirects you to the checkout page.
+        header('Location: F_checkout.php'); //it redirects you to the checkout page.
         exit;
     }
 
@@ -92,7 +92,7 @@ if ($products_in_cart) {
 
 <div class="cart content-wrapper">
     <h1>Shopping Cart</h1>
-    <form action="cart.php" method="post">
+    <form action="F_cart.php" method="post">
         <table>
             <thead>
                 <tr>
@@ -111,14 +111,14 @@ if ($products_in_cart) {
                 <?php foreach ($products as $product): ?>
                 <tr>
                     <td class="img">
-                        <a href="Product.php?Name=<?php echo $product['Name'] ?>">
+                        <a href="F_product.php?Name=<?php echo $product['Name'] ?>">
                             <img src="<?php echo $product['ImagePath'] ?>" width="50" height="50" alt="<?php echo $product['Name'] ?>">
                         </a>
                     </td>
                     <td>
-                        <a href="Product.php?Name=<?php echo $product['Name'] ?>"><?php echo $product['Name'] ?></a>
+                        <a href="F_product.php?Name=<?php echo $product['Name'] ?>"><?php echo $product['Name'] ?></a>
                         <br>
-                        <a href="cart.php?remove=<?php echo $product['ID'] ?>" class="remove">Remove</a>
+                        <a href="F_cart.php?remove=<?php echo $product['ID'] ?>" class="remove">Remove</a>
                     </td>
                     <td class="price">&dollar;<?php echo $product['Price']?></td>
                     <td class="quantity">

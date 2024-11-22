@@ -19,13 +19,13 @@ if ($count < 1) { //if it does not find any results.
     echo "No results found, please search again, or click the link to go back to the previous page.";
 
     ?>
-    <form action="customer_search.php" method="post">
+    <form action="R_customer_search.php" method="post">
     CustomerEmail<input type="email" name="email" required>
     </form>
-    <a href="customer_list.php">History</a
+    <a href="R_customer_list.php">History</a
     <?php
 } else {
     $info = $result->fetch_assoc();
     $ID = $info['ID'];
-    header("Location: historyprint.php?ID=$ID");
+    header("Location: R_history_print.php?ID=$ID");
 }

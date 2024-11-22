@@ -31,7 +31,7 @@ front_header("Storefront")?>
                     <img src="<?php echo $inventory_item['ImagePath']; ?>">
                 </div>
                 <div class="Information">
-                    <h5><a href="Product.php?Name=<?php echo $inventory_item['Name'];?>"><?php echo $inventory_item['Name'] ?></a></h5> <!--This lets the name be a link, which will transfer the name information to the Update.php page -->
+                    <h5><a href="F_product.php?Name=<?php echo $inventory_item['Name'];?>"><?php echo $inventory_item['Name'] ?></a></h5> <!--This lets the name be a link, which will transfer the name information to the Update.php page -->
                     <h5><?php echo "$".$inventory_item['Price'] ?></h5>
                     <h5><?php echo "On Hand: " .$inventory_item['QtyOnHand']?></h5>
                 </div>

@@ -2,7 +2,7 @@
 
 $id = $_GET['ID'];
 use Dompdf\Dompdf;
-$url="http://localhost/Anduin/customerhistory.php?ID=$id";
+$url="http://localhost/Anduin/R_customer_history.php?ID=$id";
 
 
 require_once('dompdf/autoload.inc.php');

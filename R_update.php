@@ -27,7 +27,7 @@ This loads the clicked items info into a form-->
 
     ?>
     <!--This loads a form which will allow the user to update the item's information.-->
-    <form action="Save_Record.php" method="post">
+    <form action="R_save_record.php" method="post">
         <input type="hidden" value="<?php echo $ID; ?>" name="ID"> <!--This is necessary for the save_record if..else to work.-->
         Name: <input type="text" name="Name" placeholder="name" maxlength="30" required
         value="<?php echo $name; ?>"><br>

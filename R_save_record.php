@@ -27,7 +27,7 @@ function validateInput($data, $fieldName) {
 
 function redisplayForm($Name, $Description, $QtyOnHand, $Price){
     ?>
-    <form action="Save_Record.php" method="post" enctype="multipart/form-data" > <!--This form will collect information for creating a new item in the database-->
+    <form action="R_save_record.php" method="post" enctype="multipart/form-data" > <!--This form will collect information for creating a new item in the database-->
         <input type="hidden" name="ID" value=0> <!--This seems unnecessary, but is necessary for the save_record page.-->
         Name: <input type="text" name="Name" placeholder="name" maxlength="30" required
         value="<?php echo $Name; ?>"><br>
@@ -169,7 +169,7 @@ function CheckImage()
             exit();
         }
         mysqli_close($Connection);
-        header('Location: Inventory_screen.php');
+        header('Location: R_Inventory_screen.php');
         exit();
 
     }

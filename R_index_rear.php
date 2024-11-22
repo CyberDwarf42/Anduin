@@ -27,7 +27,7 @@ if (isset($_GET['delete']) && is_numeric($_GET['delete'])) {
     }
     $connection->execute_query("DELETE FROM lineitems WHERE OrderID = '$orderid'");
     $connection->execute_query("DELETE FROM orderids WHERE OrderID = '$orderid'");
-    header("Location:IndexRear.php");
+    header("Location:R_index_rear.php");
 }
 
 if (isset($_GET['picked']) && is_numeric($_GET['picked'])) {
@@ -41,7 +41,7 @@ if (isset($_GET['picked']) && is_numeric($_GET['picked'])) {
         $connection->execute_query("UPDATE inventory SET QtyCommitted = '$newcommitted' WHERE ID = '$id'");
     }
     $connection->execute_query("UPDATE orderids SET Picked = 1 WHERE OrderID = '$orderid'");
-    header("Location:IndexRear.php");
+    header("Location:R_index_rear.php");
 }
 
     ?>
@@ -60,7 +60,7 @@ if (isset($_GET['picked']) && is_numeric($_GET['picked'])) {
         <?php foreach ($orders as $order): ?>
         <tr>
             <td>
-                <a href="printorder.php?ID=<?php echo $order['OrderID']; ?>"><?php echo $order['OrderID']; ?></a>
+                <a href="R_print_order.php?ID=<?php echo $order['OrderID']; ?>"><?php echo $order['OrderID']; ?></a>
             </td>
             <td>
                 <?php echo $order['Name']; ?><br>
@@ -72,10 +72,10 @@ if (isset($_GET['picked']) && is_numeric($_GET['picked'])) {
                 <?php echo $order['PhoneNumber']; ?><br>
             </td>
             <td>
-                <a href="IndexRear.php?picked=<?php echo $order['OrderID']; ?>">Mark as Picked</a><br>
+                <a href="R_index_rear.php?picked=<?php echo $order['OrderID']; ?>">Mark as Picked</a><br>
             </td>
             <td>
-                <a href="IndexRear.php?delete=<?php echo $order['OrderID']; ?>">Delete</a><br>
+                <a href="R_index_rear.php?delete=<?php echo $order['OrderID']; ?>">Delete</a><br>
             </td>
         </tr>
 </tbody>

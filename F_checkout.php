@@ -12,7 +12,7 @@ front_header('Checkout') ?>
 
 <div class="checkout content-wrapper">
     <h1>Checkout</h1>
-    <form action="placeorder.php" method="post">
+    <form action="F_place_order.php" method="post">
         First Name: <input type="text" name="first" placeholder="first name" maxlength="25" required><br>
         Last Name: <input type="text" name="last" placeholder="last name" maxlength="24" required><br>
         Email Address: <input type="email" name="email" placeholder="email" required><br>

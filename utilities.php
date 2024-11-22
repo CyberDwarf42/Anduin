@@ -48,10 +48,10 @@ function front_header($title) {
             <div class="content-wrapper">
                 <h1>$title</h1>
                 <nav>
-                    <a href="IndexFront.php">Home</a>
+                    <a href="F_index_front.php">Home</a>
                 </nav>
                 <div class="link-icons">
-                    <a href="cart.php">
+                    <a href="F_cart.php">
                         <i class="fa fa-shopping-cart"></i>
                         <span>$num_items_in_cart</span>
                     </a>
@@ -101,10 +101,10 @@ function rear_header($title) {
             <div class="inventory-container">
                 <h1>$title</h1>
                 <nav>
-                    <a href="Add.php">Add Item</a>
-                    <a href="Inventory_screen.php">Inventory</a>
-                    <a href="customer_list.php">History</a>
-                    <a href="IndexRear.php">Orders</a>
+                    <a href="R_add.php">Add Item</a>
+                    <a href="R_Inventory_screen.php">Inventory</a>
+                    <a href="R_customer_list.php">History</a>
+                    <a href="R_index_rear.php">Orders</a>
                 </nav>
             </div>
         </header>

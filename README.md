@@ -7,4 +7,49 @@ includes all the manual alterations of inventory as well as a list of all the or
 inventory. 
 
 It allows you to print the orders as well as lets you mark the orders as picked or cancel them. 
- 
+
+Dependencies:
+
+This project requires the dompdf and owasp-php-filters libraries, both are included with this project, and both have been altered so that they work with this project.
+
+Layout:
+
+This project is split in two halves, the front, and backend/rear.
+
+Front Pages:
+
+These are the pages that your customer will be interfacing with, they showcase all of your products, and allow customers to place orders.
+
+F_index_front
+
+F_cart
+
+F_checkout
+
+F_place_order
+
+F_product
+
+Rear Pages:
+
+These are the pages that allow you to view customers, view orders, and to update inventory information.
+
+R_add
+
+R_customer_list
+
+R_customer_search
+
+R_customer_history
+
+R_index_rear
+
+R_inventory_screen
+
+R_order
+
+R_print_order
+
+R_save_record
+
+R_update
